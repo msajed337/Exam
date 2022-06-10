@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Exam.Common\Exam.Common.csproj" />
+    <ProjectReference Include="..\Exam.DataAccess\Exam.DataAccess.csproj" />
+    <ProjectReference Include="..\Exam.DomainModel\Exam.DomainModel.csproj" />
+  </ItemGroup>
+
+</Project>
