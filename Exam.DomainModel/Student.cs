@@ -12,7 +12,7 @@ namespace Exam.DomainModel
         public string Grade { get; set; }
         public string Major { get; set; }
         public string Orientation { get; set; }
-        public string Average { get; set; }
+        public float Average { get; set; }
         public DateTime UniversityEntryDate { get; set; }
         public DateTime UniversityEndDate { get; set; }
 

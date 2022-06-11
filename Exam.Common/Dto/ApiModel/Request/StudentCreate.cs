@@ -22,19 +22,15 @@ namespace Exam.Common.Dto.ApiModel.Request
         public string Orientation { get; set; }
 
         [Required(ErrorMessageResourceName = "IsRequired", ErrorMessageResourceType = typeof(Messages))]
-        public string Average { get; set; }
-
-        [Required(ErrorMessageResourceName = "IsRequired", ErrorMessageResourceType = typeof(Messages))]
-        public string UniversityName { get; set; }
-
-        [Required(ErrorMessageResourceName = "IsRequired", ErrorMessageResourceType = typeof(Messages))]
-        public UniversityType UniversityType { get; set; }
-        public string UniversityAddress { get; set; }
+        public float Average { get; set; }        
 
         [Required(ErrorMessageResourceName = "IsRequired", ErrorMessageResourceType = typeof(Messages))]
         public string UniversityEntryDate { get; set; }
 
         [Required(ErrorMessageResourceName = "IsRequired", ErrorMessageResourceType = typeof(Messages))]
         public string UniversityEndDate { get; set; }
+
+        [Required(ErrorMessageResourceName = "IsRequired", ErrorMessageResourceType = typeof(Messages))]
+        public int UniversityId { get; set; }
     }
 }

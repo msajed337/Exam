@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Exam.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220610144348_InitialCreate")]
+    [Migration("20220611090329_Initial-Create")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,9 +30,8 @@ namespace Exam.DataAccess.Migrations
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Average")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float>("Average")
+                        .HasColumnType("real");
 
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
@@ -66,7 +65,12 @@ namespace Exam.DataAccess.Migrations
                     b.Property<DateTime>("UniversityEntryDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("UniversityId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UniversityId");
 
                     b.ToTable("Students");
                 });
@@ -99,6 +103,15 @@ namespace Exam.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Universities");
+                });
+
+            modelBuilder.Entity("Exam.DomainModel.Student", b =>
+                {
+                    b.HasOne("Exam.DomainModel.University", "University")
+                        .WithMany("Students")
+                        .HasForeignKey("UniversityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

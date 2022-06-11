@@ -1,5 +1,4 @@
-﻿using Exam.Common.Dto.ServiceModel;
-using Exam.Common.Resources;
+﻿using Exam.Common.Resources;
 using Exam.Constants;
 using System;
 using System.Collections.Generic;
@@ -8,18 +7,15 @@ using System.Text;
 
 namespace Exam.Common.Dto.ApiModel.Request
 {
-    public class StudentFilter : PagingModel
+    public class UniversityCreate
     {
         [Required(ErrorMessageResourceName = "IsRequired", ErrorMessageResourceType = typeof(Messages))]
-        public string FromDate { get; set; }
+        public string Name { get; set; }
 
         [Required(ErrorMessageResourceName = "IsRequired", ErrorMessageResourceType = typeof(Messages))]
-        public string ToDate { get; set; }
+        public UniversityType Type { get; set; }
 
         [Required(ErrorMessageResourceName = "IsRequired", ErrorMessageResourceType = typeof(Messages))]
-        public string FullName { get; set; }
-
-        [Required(ErrorMessageResourceName = "IsRequired", ErrorMessageResourceType = typeof(Messages))]
-        public string NationalCode { get; set; }
+        public string Address { get; set; }
     }
 }

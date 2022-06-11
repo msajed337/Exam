@@ -8,17 +8,14 @@ namespace Exam.Common.Extension
 {
     public static class Utilities
     {
-        public static DateTime ToGregorian(this string date)
+        public static DateTime ToGregorian(this string date) =>
+            DateTime.Parse(date, new CultureInfo("fa-IR"));
+
+        public static string ToPersian(this DateTime value)
         {
             PersianCalendar pc = new PersianCalendar();
-            string[] splitDate;
-            splitDate = date.Contains("-") ? date.Split("-") : date.Split("/");
-            var intDate = splitDate.Select(i => int.Parse(i)).ToList();
-            DateTime dateTime = new DateTime(intDate[0], intDate[1], intDate[2], pc);
-            return dateTime;
+            return $"{pc.GetYear(value)}/{pc.GetMonth(value)}/{pc.GetDayOfMonth(value)}";
         }
 
-        public static DateTime ToGregorianVer2(this string date) =>
-            DateTime.Parse(date, new CultureInfo("fa-IR"));
     }
 }

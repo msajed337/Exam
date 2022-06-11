@@ -13,28 +13,28 @@ using System.Threading.Tasks;
 namespace Exam.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
     [ApiVersion("1.0")]
-    public class StudentController : ControllerBase
+    [Route("[controller]")]
+    public class UniversityController : ControllerBase
     {
         #region Override
 
         #region ctor
-        public StudentController(IStudentBusinessRule service)
+        public UniversityController(IUniversityBusinessRule service)
         {
             _service = service;
         }
         #endregion
 
         #region fields
-        private readonly IStudentBusinessRule _service;
+        private readonly IUniversityBusinessRule _service;
         #endregion
 
         #region public
         [HttpGet, MapToApiVersion("1.0")]
-        public async Task<IActionResult> List([FromQuery] StudentFilter input)
+        public async Task<IActionResult> List([FromQuery] UniversityFilter input)
         {
-            var resp = new ListResponseBase<ListStudent>();
+            var resp = new ListResponseBase<University>();
             try
             {
                 resp = await _service.GetList(input);
@@ -50,7 +50,7 @@ namespace Exam.Api.Controllers
         [HttpGet("{id}"), MapToApiVersion("1.0")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var resp = new ResponseBase<Student>();
+            var resp = new ResponseBase<University>();
             try
             {
                 resp = await _service.GetById(id);
@@ -64,9 +64,9 @@ namespace Exam.Api.Controllers
         }
 
         [HttpPost, MapToApiVersion("1.0")]
-        public async Task<IActionResult> Add(StudentCreate input)
+        public async Task<IActionResult> Add(UniversityCreate input)
         {
-            var resp = new ResponseBase<Student>();
+            var resp = new ResponseBase<University>();
             try
             {
                 resp = await _service.Add(input);

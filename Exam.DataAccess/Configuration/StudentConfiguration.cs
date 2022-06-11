@@ -19,7 +19,7 @@ namespace Exam.DataAccess.Configuration
             builder.Property(x => x.Grade).IsRequired(false);
             builder.Property(x => x.Major).IsRequired(false);
             builder.Property(x => x.Orientation).IsRequired(false);
-            builder.Property(x => x.Average).IsRequired(true);
+            builder.Property(x => x.Average).IsRequired(true).HasColumnType("real");
             builder.Property(x => x.UniversityEntryDate).IsRequired(true);
             builder.Property(x => x.UniversityEntryDate).IsRequired(true);
             builder.HasOne(x => x.University).WithMany(x => x.Students).HasForeignKey(x => x.UniversityId);
@@ -34,7 +34,7 @@ namespace Exam.DataAccess.Configuration
         public string Grade { get; set; }
         public string Major { get; set; }
         public string Orientation { get; set; }
-        public string Average { get; set; }
+        public float Average { get; set; }
         public string UniversityEntryDate { get; set; }
         public string UniversityEndDate { get; set; }
         public University University { get; set; }

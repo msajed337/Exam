@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Exam.Common.Contract.BusinessRule
 {
-    public interface IStudentBusinessRule
+    public interface IUniversityBusinessRule
     {
-        Task<ListResponseBase<ListStudent>> GetList(StudentFilter input);
-        Task<ResponseBase<Student>> GetById(int id);
-        Task<ResponseBase<Student>> Add(StudentCreate input);
+        Task<ListResponseBase<University>> GetList(UniversityFilter input);
+        Task<ResponseBase<University>> GetById(int id);
+        Task<ResponseBase<University>> Add(UniversityCreate input);
     }
 }

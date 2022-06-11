@@ -28,9 +28,8 @@ namespace Exam.DataAccess.Migrations
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Average")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float>("Average")
+                        .HasColumnType("real");
 
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()

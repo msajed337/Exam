@@ -1,31 +1,32 @@
-﻿using System;
+﻿using Exam.Common.Extension;
+using Exam.Constants;
+using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Text;
 
 namespace Exam.Common.Dto.ApiModel.Response
 {
     public class Student
     {
-        public static explicit operator Student(DomainModel.Student input)
-        {
-            PersianCalendar pc = new PersianCalendar();
-            var student = new Student
+        public static explicit operator Student(DomainModel.Student input) =>
+            new Student
             {
-                FirstName = input.FirstName,
-                LastName = input.LastName,
-                NationalCode = input.NationalCode,
+                Fullname = $"{input.FirstName} {input.LastName}",
+                Grade = input.Grade,
+                Major = input.Major,
+                Orientation = input.Orientation,
+                Average = input.Average,
+                University= (University)input.University,
+                UniversityEntryDate = input.UniversityEntryDate.ToPersian(),
+                UniversityEndDate = input.UniversityEndDate.ToPersian()
             };
-            student.Date = $"{pc.GetYear(input.CreationDate)}/{pc.GetMonth(input.CreationDate)}/{pc.GetDayOfMonth(input.CreationDate)}";
-
-            return student;
-        }
-
-
-
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string NationalCode { get; set; }
-        public string Date { get; set; }
+        public string Fullname { get; set; }
+        public string Grade { get; set; }
+        public string Major { get; set; }
+        public string Orientation { get; set; }
+        public float Average { get; set; }
+        public University University { get; set; }
+        public string UniversityEntryDate { get; set; }
+        public string UniversityEndDate { get; set; }
     }
 }
